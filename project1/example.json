@@ -1,0 +1,25 @@
+{
+    "builders":[
+        {
+            "type": "amazon-ebs",
+            "region": "ap-south-1",
+            "ami_name": "ubuntu_nginx_img",
+            "source_ami": "ami-06984ea821ac0a879",
+            "instance_type":"t2.micro",
+            "ssh_username": "ubuntu" 
+        }
+    ],
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sleep 30",
+                "sudo apt update",
+                "sudo apt install nginx -y ",
+                "sudo systemctl start nginx"     
+            ]
+        }
+
+    ]
+} 
